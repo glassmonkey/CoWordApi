@@ -1,5 +1,5 @@
 #!/bin/bash
-PROJECT_HOME=/Users/shunsuke/work/spark
+PROJECT_HOME=/Users/shunsuke/work/CoWordCountApi/
 cd $PROJECT_HOME;
 sbt clean package;
 sudo $SPARK_HOME/bin/spark-submit \
