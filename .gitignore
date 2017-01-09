@@ -1,6 +1,6 @@
 *.class
 *.log
-
+config.yml
 # sbt specific
 .cache
 .history
@@ -16,5 +16,5 @@ project/plugins/project/
 .scala_dependencies
 .worksheet
 
-#python 
+#python
 .pyc
