@@ -1,0 +1,41 @@
+#設定ファイル
+# dict
+twitter_keys:
+    CONSUMER_KEY: tjxCz2WQOiXKxivBnr6DRRUbU
+    CONSUMER_SECRET: lfigiVjXOtXHdJPBUiVTwXt62rSpNsmsQrLTSbjMYMn2P1kIkV
+    ACCESS_TOKEN: 292815831-jYSKzP8gZk3dJDWcLVZrkYeZuYdGIcryLygFzZLH
+    ACCESS_SECRET: ScEN3pzTk44konvt5QEFxJz82xF6QEErA36mwDRChRHmm
+
+servers:
+    sentence_zookeeper_server: localhost:2181
+    sentence_kafka_server: localhost:9092
+    word_zookeeper_server: localhost:2181
+    word_kafka_server: localhost:9092
+
+mongo:
+    ip: localhost
+    port: 27017
+
+spark:
+    interval: 1
+    size: 60
+    surge_interval: 5
+    checkpoint: ./checkpoint
+
+topics:
+    ss: sentence_stream
+    ws: word_stream
+    cs: co_occurs_stream
+    sws: serge_word_stream
+    was: word_advanced_stream
+
+data_len:
+    ws: 200
+    cs: 200
+    sws: 200
+
+consumer_group: sentence_group
+
+stopwords: ./stopwords.txt
+
+whitelist: ./whitelist.txt
