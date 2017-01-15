@@ -1,0 +1,28 @@
+{
+  "name": "cowordapi",
+  "version": "0.0.1",
+  "description": "Apache License                            Version 2.0, January 2004                         http://www.apache.org/licenses/",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "forever start app.js",
+    "stop": "forever stop app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glassmonkey/CoWordApi.git"
+  },
+  "author": "shunsuke.nagano",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/glassmonkey/CoWordApi/issues"
+  },
+  "homepage": "https://github.com/glassmonkey/CoWordApi#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "forever": "^0.15.3",
+    "multer": "^1.2.1",
+    "watchman": "^0.1.8"
+  }
+}
