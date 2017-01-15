@@ -5,6 +5,7 @@ import sys
 import time
 import yaml
 import re
+import requests
 
 # Tweepyライブラリをインポート
 import tweepy
@@ -42,9 +43,9 @@ for line in file:
 file.close()
 
 class StdOutListener(StreamListener):
-    def __init__(self):
+    def __init__(self, apiConfig):
          super(StdOutListener,self).__init__()
-
+         self.apiConfig = apiConfig;
     def on_data(self, data):
         try:
             if data.startswith("{"):
@@ -52,8 +53,10 @@ class StdOutListener(StreamListener):
                 # if jsonData['lang'] == 'ja' and 'bot' not in jsonData['source']:
                 if jsonData['lang'] == 'ja' and trimSrc(jsonData['source']).encode('utf-8') in wl:
                     message = jsonData['text'].encode('utf-8')
+                    request = {'text': message}
                     # message = trimSrc(jsonData['source'].encode('utf-8'))
                     # デバッグ用print
+                    requests.post(self.apiConfig['url']+self.apiConfig['path'],data=request)
                     if usePrint == True:
                         print message
                     #self.producer.send_Data(message);
@@ -68,7 +71,7 @@ class StdOutListener(StreamListener):
         return False
 
 if __name__ == '__main__':
-    l = StdOutListener()
+    l = StdOutListener(conf['twitter'])
     auth = initAuth()
     stream = Stream(auth, l)
     while True:
