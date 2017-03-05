@@ -1,8 +1,17 @@
 #!/bin/bash
 . environment.sh
 cd $PROJECT_HOME;
-sbt clean package;
+
+echo $PROJECT_HOME/target/scala-${SCALA_VERSION}/`echo $APP_NAME | tr "[:upper:]" "[:lower:]"`_${SCALA_VERSION}-${APP_VERSION}.jar
+echo ${NAME_SPACE}.${APP_NAME}
+
+sbt clean
+sbt package
 sudo $SPARK_HOME/bin/spark-submit \
---class com.example.SimpleApp \
---master local[4] \
-$PROJECT_HOME/target/scala-${SCALA_VERSION}/simple-app_${SCALA_VERSION}-${APP_VERSION}.jar
+--packages org.apache.spark:spark-streaming-kafka-0-8_2.11:2.1.0 \
+--verbose \
+--class ${NAME_SPACE}.${APP_NAME} \
+--master local[*] \
+--conf spark.executor.extraJavaOptions=-Dlog4j.configuration=log4j.properties \
+$PROJECT_HOME/target/scala-${SCALA_VERSION}/`echo ${APP_NAME} | tr "[:upper:]" "[:lower:]"`_${SCALA_VERSION}-${APP_VERSION}.jar
+#
