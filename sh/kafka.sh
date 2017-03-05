@@ -12,4 +12,4 @@ if [ $kafka -ne 0 ]; then
     echo ${PROJECT_HOME}sh/server.properties
     kafka-server-stop
 fi
-kafka-server-start ${PROJECT_HOME}sh/server.properties &
+kafka-server-start ${PROJECT_HOME}/sh/server.properties &
