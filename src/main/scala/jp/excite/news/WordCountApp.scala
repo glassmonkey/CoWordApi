@@ -89,10 +89,7 @@ object WordCountApp{
 
     val wordCounts = words.map(x => (x, 1L)).reduceByKeyAndWindow(_ + _, _ - _, Minutes(10), Seconds(2), 2)
     //wordCounts.collect.foreach(println)
-    wordsCounts.foreachRDD(rdd =>
-
-
-    )
+    
     wordCounts.print()
 
     ssc.start()
